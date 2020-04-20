@@ -4,13 +4,12 @@ import config from "config";
 const GoogleAuth = () => {
    const [auth, setAuth] = useState(null);
 
-   const onAuthChange = (isSignedIn) {
-       if (isSignedIn)
-            console.log("sign out");
-       else{
-            console.log("sign in");
-       }
-   }
+   const onAuthChange = (isSignedIn) => {
+      if (isSignedIn) console.log("sign out");
+      else {
+         console.log("sign in");
+      }
+   };
 
    useEffect(() => {
       const clientID = config.get("oAuth_ClientID");
@@ -28,7 +27,7 @@ const GoogleAuth = () => {
             });
       });
    });
-   
+
    return <div></div>;
 };
 
