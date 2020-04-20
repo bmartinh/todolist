@@ -10,6 +10,7 @@ import store from "./store";
 
 import Navbar from "./components/layout/Navbar";
 import Taskbar from "./components/layout/Taskbar";
+import TaskList from "./components/tasks/TasksList";
 
 const App = () => {
    useEffect(() => {
@@ -25,6 +26,7 @@ const App = () => {
                <Navbar />
                <div className='container'>
                   <Taskbar />
+                  <TaskList />
                </div>
                {/* <div className='container'>
                   <Switch>

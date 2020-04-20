@@ -10,11 +10,10 @@ const Task = require("../models/Task");
 // @route GET api/tasks
 // @desc Get list of tasks for a user
 // @access Private
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
    try {
-      const tasks = await Task.find({ user: req.user.id }).sort({
-         date: -1
-      });
+      // const tasks = await Task.find({ user: req.user.id }).sort({
+      const tasks = await Task.find({});
       res.json(tasks);
    } catch (error) {
       console.log(error.message);
@@ -27,7 +26,7 @@ router.get("/", auth, async (req, res) => {
 // @access Private
 router.post(
    "/",
-   auth,
+   //auth,
    [check("name", "Name is required").not().isEmpty()],
    async (req, res) => {
       const errors = validationResult(req);
@@ -42,8 +41,8 @@ router.post(
             description,
             urgent,
             date,
-            completed,
-            user: req.user.id
+            completed
+            //user: req.user.id
          });
 
          const task = await newTask.save();
