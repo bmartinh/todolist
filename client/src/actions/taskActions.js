@@ -7,7 +7,6 @@ export const getTasks = () => async (dispatch) => {
       setLoading();
 
       const res = await axios.get("/api/tasks");
-      console.log(res);
 
       dispatch({
          type: GET_TASKS,
