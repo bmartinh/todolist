@@ -28,7 +28,7 @@ export const addTask = (task) => async (dispatch) => {
             "Content-Type": "application/json"
          }
       });
-      console.log(res);
+
       dispatch({
          type: ADD_TASK,
          payload: res.data

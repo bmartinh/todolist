@@ -5,11 +5,13 @@ import PropTypes from "prop-types";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const Taskbar = ({ addTask }) => {
+const Taskbar = ({ isSignedIn, addTask }) => {
    const [name, setName] = useState("");
    const onClick = () => {
       if (name === "") M.toast({ html: "Please enter a name for the task" });
-      else {
+      else if (!isSignedIn) {
+         M.toast({ html: "Please sign in with your Google Account first" });
+      } else {
          const task = {
             name
          };
@@ -50,4 +52,10 @@ Taskbar.propTypes = {
    addTask: PropTypes.func.isRequired
 };
 
-export default connect(null, { addTask })(Taskbar);
+const mapStateToProps = (state) => {
+   return {
+      isSignedIn: state.auth.isSignedIn
+   };
+};
+
+export default connect(mapStateToProps, { addTask })(Taskbar);

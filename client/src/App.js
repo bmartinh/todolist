@@ -24,6 +24,7 @@ const App = () => {
             {/* <Router> */}
             <Fragment>
                <Navbar />
+
                <div className='container'>
                   <Taskbar />
                   <TaskList />

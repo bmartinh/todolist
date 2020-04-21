@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 //import { Link } from "react-router-dom";
+import GoogleAuth from "../auth/GoogleAuth";
 
 const Navbar = ({ title }) => {
    return (
@@ -11,12 +12,13 @@ const Navbar = ({ title }) => {
                {title}
             </a>
             <ul id='nav-mobile' className='right hide-on-med-and-down'>
-               <li>
+               {/* <li>
                   <a href='#!'>Login</a>
                </li>
                <li>
                   <a href='#!'>Register</a>
-               </li>
+               </li> */}
+               <GoogleAuth />
             </ul>
          </div>
       </nav>
