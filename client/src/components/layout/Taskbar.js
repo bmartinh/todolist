@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const Taskbar = ({ isSignedIn, addTask }) => {
+const Taskbar = ({ userID, isSignedIn, addTask }) => {
    const [name, setName] = useState("");
    const onClick = () => {
       if (name === "") M.toast({ html: "Please enter a name for the task" });
@@ -13,7 +13,8 @@ const Taskbar = ({ isSignedIn, addTask }) => {
          M.toast({ html: "Please sign in with your Google Account first" });
       } else {
          const task = {
-            name
+            name,
+            user: userID
          };
 
          addTask(task);
@@ -54,7 +55,8 @@ Taskbar.propTypes = {
 
 const mapStateToProps = (state) => {
    return {
-      isSignedIn: state.auth.isSignedIn
+      isSignedIn: state.auth.isSignedIn,
+      userID: state.auth.userID
    };
 };
 

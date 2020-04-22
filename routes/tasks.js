@@ -10,10 +10,9 @@ const Task = require("../models/Task");
 // @route GET api/tasks
 // @desc Get list of tasks for a user
 // @access Private
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
    try {
-      // const tasks = await Task.find({ user: req.user.id }).sort({
-      const tasks = await Task.find({});
+      const tasks = await Task.find({ user: req.params.id });
       res.json(tasks);
    } catch (error) {
       console.log(error.message);
@@ -27,21 +26,25 @@ router.get("/", async (req, res) => {
 router.post(
    "/",
    //auth,
-   [check("name", "Name is required").not().isEmpty()],
+   [
+      check("name", "Name is required").not().isEmpty(),
+      check("user", "User is required").not().isEmpty()
+   ],
    async (req, res) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
          return res.status(400).json({ errors: errors.array() });
       }
 
-      const { name, description, urgent, date, completed } = req.body;
+      const { name, description, urgent, date, completed, user } = req.body;
       try {
          const newTask = new Task({
             name,
             description,
             urgent,
             date,
-            completed
+            completed,
+            user
             //user: req.user.id
          });
 
@@ -57,22 +60,25 @@ router.post(
 // @route PUT api/tasks:id
 // @desc Update task
 // @access Private
-router.put("/:id", auth, async (req, res) => {
-   const { name, description, urgent, date, completed } = req.body;
+router.put("/:id", async (req, res) => {
+   const { name, description, urgent, date, completed, user } = req.body;
 
    const taskFields = {};
    if (name) taskFields.name = name;
    if (description) taskFields.description = description;
-   if (urgent) taskFields.urgent = urgent;
+   taskFields.urgent = urgent;
    if (date) taskFields.date = date;
-   if (completed) taskFields.completed = completed;
+   taskFields.completed = completed;
+   if (user) taskFields.user = user;
 
+   console.log(taskFields);
    try {
       let task = await Task.findById(req.params.id);
+
       if (!task) return res.status(404).json({ msg: "Task not found" });
 
       //Make sure user owns contact
-      if (task.user.toString() !== req.user.id) {
+      if (task.user !== user) {
          return res.status(401).json({ msg: "Not authorized" });
       }
 

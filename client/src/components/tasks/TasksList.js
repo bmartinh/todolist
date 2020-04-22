@@ -6,14 +6,15 @@ import PropTypes from "prop-types";
 import Preloader from "../layout/Preloader";
 import TaskItem from "./TaskItem";
 
-const TasksList = ({ task: { tasks, loading }, getTasks }) => {
+const TasksList = ({ task: { tasks, loading }, userID, getTasks }) => {
    useEffect(() => {
-      getTasks();
-
+      if (userID) getTasks(userID);
       //eslint-disable-next-line
-   }, []);
+   }, [userID]);
 
-   if (tasks === null || loading) return <Preloader />;
+   if (loading) return <Preloader />;
+
+   if (tasks === null) return <div>No tasks</div>;
 
    return (
       <ul className='collection'>
@@ -30,7 +31,8 @@ TasksList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-   task: state.task
+   task: state.task,
+   userID: state.auth.userID
 });
 
 export default connect(mapStateToProps, { getTasks })(TasksList);

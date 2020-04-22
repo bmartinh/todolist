@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { logIn, logOut } from "../../actions/authActions";
+import { clearTasks } from "../../actions/taskActions";
 
 class GoogleAuth extends React.Component {
    onAuthChange = (isSignedIn) => {
@@ -8,6 +9,7 @@ class GoogleAuth extends React.Component {
          this.props.logIn(this.auth.currentUser.get().getId());
       } else {
          this.props.logOut();
+         this.props.clearTasks();
       }
    };
 
@@ -64,5 +66,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
    logIn,
-   logOut
+   logOut,
+   clearTasks
 })(GoogleAuth);
