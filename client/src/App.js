@@ -11,6 +11,7 @@ import store from "./store";
 import Navbar from "./components/layout/Navbar";
 import Taskbar from "./components/layout/Taskbar";
 import TaskList from "./components/tasks/TasksList";
+import DateComponent from "./components/date/DateComponent";
 
 const App = () => {
    useEffect(() => {
@@ -26,6 +27,8 @@ const App = () => {
                <Navbar />
 
                <div className='container'>
+                  <hr></hr>
+                  <DateComponent />
                   <Taskbar />
                   <TaskList />
                </div>

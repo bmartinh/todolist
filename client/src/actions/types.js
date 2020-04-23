@@ -10,3 +10,4 @@ export const SET_LOADING = "SET_LOADING";
 export const SET_AUTH_INSTANCE = "SET_AUTH_INSTANCE";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const CLEAR_TASKS = "CLEAR_TASKS";
+export const SET_CURRENT_DATE = "SET_CURRENT_DATE";
