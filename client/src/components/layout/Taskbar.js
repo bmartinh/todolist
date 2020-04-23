@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { addTask } from "../../actions/taskActions";
+import { addTask, getTasks } from "../../actions/taskActions";
 import PropTypes from "prop-types";
 
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const Taskbar = ({ userID, isSignedIn, addTask }) => {
+const Taskbar = ({ userID, currentDate, isSignedIn, addTask, getTasks }) => {
    const [name, setName] = useState("");
+
    const onClick = () => {
-      if (name === "") M.toast({ html: "Please enter a name for the task" });
-      else if (!isSignedIn) {
+      if (name === "") {
+         M.toast({ html: "Please enter a name for the task" });
+      } else if (!isSignedIn) {
          M.toast({ html: "Please sign in with your Google Account first" });
       } else {
          const task = {
             name,
-            user: userID
+            user: userID,
+            date: currentDate
          };
 
          addTask(task);
+         // getTasks(userID, currentDate);
          M.toast({ html: "Task added" });
          setName("");
       }
@@ -56,8 +60,9 @@ Taskbar.propTypes = {
 const mapStateToProps = (state) => {
    return {
       isSignedIn: state.auth.isSignedIn,
-      userID: state.auth.userID
+      userID: state.auth.userID,
+      currentDate: state.date.currentDate
    };
 };
 
-export default connect(mapStateToProps, { addTask })(Taskbar);
+export default connect(mapStateToProps, { addTask, getTasks })(Taskbar);

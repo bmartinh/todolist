@@ -6,11 +6,16 @@ import PropTypes from "prop-types";
 import Preloader from "../layout/Preloader";
 import TaskItem from "./TaskItem";
 
-const TasksList = ({ task: { tasks, loading }, userID, getTasks }) => {
+const TasksList = ({
+   task: { tasks, loading },
+   userID,
+   currentDate,
+   getTasks
+}) => {
    useEffect(() => {
-      if (userID) getTasks(userID);
+      if (userID && currentDate) getTasks(userID, currentDate);
       //eslint-disable-next-line
-   }, [userID]);
+   }, [userID, currentDate]);
 
    if (loading) return <Preloader />;
 
@@ -32,7 +37,8 @@ TasksList.propTypes = {
 
 const mapStateToProps = (state) => ({
    task: state.task,
-   userID: state.auth.userID
+   userID: state.auth.userID,
+   currentDate: state.date.currentDate
 });
 
 export default connect(mapStateToProps, { getTasks })(TasksList);

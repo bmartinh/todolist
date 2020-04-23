@@ -25,8 +25,8 @@ const tasksSchema = mongoose.Schema({
       default: false
    },
    date: {
-      type: Date,
-      default: Date.now
+      type: String,
+      required: true
    }
 });
 

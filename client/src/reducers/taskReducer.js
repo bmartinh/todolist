@@ -4,7 +4,8 @@ import {
    UPDATE_TASK,
    TASK_ERROR,
    SET_LOADING,
-   CLEAR_TASKS
+   CLEAR_TASKS,
+   DELETE_TASK
 } from "../actions/types";
 
 const initialState = {
@@ -33,6 +34,12 @@ export default (state = initialState, action) => {
             tasks: state.tasks.map((task) =>
                task._id === action.payload._id ? action.payload : task
             ),
+            loading: false
+         };
+      case DELETE_TASK:
+         return {
+            ...state,
+            tasks: state.tasks.filter((task) => task._id !== action.payload),
             loading: false
          };
       case CLEAR_TASKS:

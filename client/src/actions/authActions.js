@@ -1,7 +1,6 @@
 import {
    LOGIN_USER,
    LOGOUT_USER,
-   AUTH_ERROR,
    SET_AUTH_INSTANCE,
    SET_LOADING
 } from "./types";

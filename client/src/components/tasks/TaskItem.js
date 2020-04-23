@@ -1,20 +1,22 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { updateTask } from "../../actions/taskActions";
+import { updateTask, deleteTask } from "../../actions/taskActions";
 
-const TaskItem = ({ task, updateTask }) => {
+const TaskItem = ({ task, updateTask, deleteTask }) => {
    const textClass = task.completed ? "line-through" : "";
    const onChange = (e) => {
       if (e.target.checked) {
          const newTask = { ...task, completed: true };
-         console.log("newTask", newTask);
          updateTask(newTask);
       } else {
          const newTask = { ...task, completed: false };
-         console.log("newTask", newTask);
          updateTask(newTask);
       }
+   };
+
+   const onDelete = () => {
+      deleteTask(task._id);
    };
 
    return (
@@ -29,6 +31,11 @@ const TaskItem = ({ task, updateTask }) => {
                   checked={task.completed}
                />
                <span style={{ textDecoration: textClass }}>{task.name}</span>
+               <a href='#!' className='secondary-content' onClick={onDelete}>
+                  <i className='material-icons' style={{ color: "gray" }}>
+                     delete
+                  </i>
+               </a>
             </Fragment>
          </label>
       </li>
@@ -37,7 +44,8 @@ const TaskItem = ({ task, updateTask }) => {
 
 TaskItem.propTypes = {
    task: PropTypes.object.isRequired,
-   updateTask: PropTypes.func.isRequired
+   updateTask: PropTypes.func.isRequired,
+   deleteTask: PropTypes.func.isRequired
 };
 
-export default connect(null, { updateTask })(TaskItem);
+export default connect(null, { updateTask, deleteTask })(TaskItem);
