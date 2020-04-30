@@ -23,7 +23,7 @@ const Navbar = ({ title }) => {
                      data-target='mobile-demo'
                      className='sidenav-trigger'
                   >
-                     <i class='material-icons'>menu</i>
+                     <i className='material-icons'>menu</i>
                   </a>
                   <ul className='right hide-on-med-and-down'>
                      <GoogleAuth />
