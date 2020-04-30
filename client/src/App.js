@@ -1,8 +1,9 @@
 import React, { useEffect, Fragment } from "react";
-import "./App.css";
+//import "./App.css";
+import "./scss/App.scss";
 //import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import "materialize-css/dist/css/materialize.min.css";
+//import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 import { Provider } from "react-redux";
@@ -17,6 +18,8 @@ const App = () => {
    useEffect(() => {
       // Init Materialize JS
       M.AutoInit();
+      let sidenav = document.querySelector(".button-collapse");
+      M.Sidenav.init(sidenav, {});
    });
 
    return (
@@ -27,21 +30,12 @@ const App = () => {
                <Navbar />
 
                <div className='container'>
-                  <hr></hr>
+                  <div style={{ marginTop: "10px" }}></div>
                   <DateComponent />
                   <Taskbar />
                   <TaskList />
                </div>
-               {/* <div className='container'>
-                  <Switch>
-                     <PrivateRoute exact path='/' component={Home} />
-                     <Route exact path='/about' component={About} />
-                     <Route exact path='/register' component={Register} />
-                     <Route exact path='/login' component={Login} />
-                  </Switch>
-               </div> */}
             </Fragment>
-            {/* </Router> */}
          </Fragment>
       </Provider>
    );

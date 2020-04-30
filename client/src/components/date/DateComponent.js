@@ -35,16 +35,16 @@ const DateComponent = ({ currentDate, setCurrentDate }) => {
    //moment('2010-01-01').isSame('2010-02-01', 'day');  comparing dates by day month and year
    return (
       <div className='row'>
-         <div className='col s1'>
+         <div className='col s2 l3'>
             <a
                onClick={onClickLeft}
-               className='waves-effect waves-light btn'
+               className='waves-effect waves-light btn light-blue darken-3 right'
                href='#!'
             >
                <i className='material-icons'>chevron_left</i>
             </a>
          </div>
-         <div className='col s10'>
+         <div className='col s8 l6'>
             <input
                id='datepicker'
                ref={dateEl}
@@ -54,10 +54,10 @@ const DateComponent = ({ currentDate, setCurrentDate }) => {
                style={{ fontSize: "bold", textAlign: "center" }}
             />
          </div>
-         <div className='col s1'>
+         <div className='col s2 l3'>
             <a
                onClick={onClickRight}
-               className='waves-effect waves-light btn'
+               className='waves-effect waves-light light-blue darken-3 btn'
                href='#!'
             >
                <i className='material-icons'>chevron_right</i>

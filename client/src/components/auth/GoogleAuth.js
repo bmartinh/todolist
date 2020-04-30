@@ -39,16 +39,22 @@ class GoogleAuth extends React.Component {
       if (this.props.isSignedIn === null) return null;
       else if (this.props.isSignedIn) {
          return (
-            <a className='red' onClick={this.onSignOutClick} href='#!'>
-               <i className='google icon' />
-               Sign Out
+            <a
+               className='btn waves-effect waves-light'
+               onClick={this.onSignOutClick}
+               href='#!'
+            >
+               <i className='material-icons left fab fa-google'></i>Sign Out
             </a>
          );
       } else {
          return (
-            <a className='red' onClick={this.onSignInClick} href='#!'>
-               <i className='google icon' />
-               Sign In with Google
+            <a
+               className='btn waves-effect waves-light'
+               onClick={this.onSignInClick}
+               href='#!'
+            >
+               <i className='material-icons left fab fa-google'></i>Sign In
             </a>
          );
       }

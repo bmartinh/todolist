@@ -30,19 +30,20 @@ const Taskbar = ({ userID, currentDate, isSignedIn, addTask, getTasks }) => {
    return (
       <form>
          <div className='row'>
-            <div className='input-field col s10'>
+            <div className='col s10 push-s1'>
                <input
-                  placeholder='¿Qué quieres hacer hoy?'
+                  placeholder='What do we do today?'
+                  autoComplete='off'
                   id='task-bar'
                   type='text'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                />
             </div>
-            <div className='input-field col s2'>
+            <div className='col s1'>
                <a
                   onClick={onClick}
-                  className='waves-effect waves-light btn'
+                  className='btn-floating btn-large waves-effect waves-green teal lighten-1 pulse'
                   href='#!'
                >
                   <i className='material-icons center'>add</i>

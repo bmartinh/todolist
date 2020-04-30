@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import GoogleAuth from "../auth/GoogleAuth";
+import M from "materialize-css/dist/js/materialize.min.js";
 
 const Navbar = ({ title }) => {
+   const sideNav = useRef();
+
+   useEffect(() => {
+      M.Sidenav.init(sideNav.current, {});
+   });
+
    return (
-      <nav>
-         <div className='nav-wrapper blue darken-3'>
-            <a href='#!' className='brand-logo'>
-               <i className='material-icons'>view_list</i>
-               {title}
-            </a>
-            <ul id='nav-mobile' className='right hide-on-med-and-down'>
-               <GoogleAuth />
-            </ul>
-         </div>
-      </nav>
+      <div>
+         <nav>
+            <div className='nav-wrapper'>
+               <div className='container'>
+                  <a href='#!' className='brand-logo'>
+                     {title}
+                  </a>
+                  <a
+                     href='#'
+                     data-target='mobile-demo'
+                     className='sidenav-trigger'
+                  >
+                     <i class='material-icons'>menu</i>
+                  </a>
+                  <ul className='right hide-on-med-and-down'>
+                     <GoogleAuth />
+                  </ul>
+               </div>
+            </div>
+         </nav>
+         <ul ref={sideNav} className='sidenav custom-sidenav' id='mobile-demo'>
+            <GoogleAuth />
+         </ul>
+      </div>
    );
 };
 Navbar.propTypes = {
@@ -22,7 +42,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-   title: "Todo List"
+   title: "aCComplish"
 };
 
 export default Navbar;

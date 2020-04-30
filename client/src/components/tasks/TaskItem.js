@@ -20,23 +20,25 @@ const TaskItem = ({ task, updateTask, deleteTask }) => {
    };
 
    return (
-      <li className='collection-item'>
+      <li className='collection-item list-item'>
          <label>
-            <Fragment>
-               <input
-                  onChange={onChange}
-                  type='checkbox'
-                  className='filled-in'
-                  value={task.completed}
-                  checked={task.completed}
-               />
-               <span style={{ textDecoration: textClass }}>{task.name}</span>
-               <a href='#!' className='secondary-content' onClick={onDelete}>
-                  <i className='material-icons' style={{ color: "gray" }}>
-                     delete
-                  </i>
-               </a>
-            </Fragment>
+            <input
+               onChange={onChange}
+               type='checkbox'
+               className='filled-in'
+               value={task.completed}
+               checked={task.completed}
+            />
+
+            <span
+               className='taskitem_text'
+               style={{ textDecoration: textClass }}
+            >
+               {task.name}
+            </span>
+            <a href='#!' className='secondary-content' onClick={onDelete}>
+               <i className='material-icons grey-text'>delete</i>
+            </a>
          </label>
       </li>
    );

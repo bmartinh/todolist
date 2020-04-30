@@ -19,14 +19,23 @@ const TasksList = ({
 
    if (loading) return <Preloader />;
 
-   if (tasks === null) return <div>No tasks</div>;
+   if (tasks === null)
+      return (
+         <div style={{ marginLeft: "1rem" }}>
+            <h5 className='left-align white-text'>Enter some tasks!</h5>
+         </div>
+      );
 
    return (
-      <ul className='collection'>
-         {tasks.map((task) => (
-            <TaskItem key={task._id} task={task} />
-         ))}
-      </ul>
+      <div className='row'>
+         <div className='col l10 push-l1 s10 push-s1'>
+            <ul className='collection no-border'>
+               {tasks.map((task) => (
+                  <TaskItem key={task._id} task={task} />
+               ))}
+            </ul>
+         </div>
+      </div>
    );
 };
 

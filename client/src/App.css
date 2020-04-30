@@ -1,1 +1,37 @@
+* {
+   /*
+  -May want to add "border-box for "box-sizing so padding does not affect width
+  -Reset margin and padding
+ */
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
 
+/* Showcase */
+body {
+   background: url("../src/img/notebook_bg.png") no-repeat center center/cover;
+   height: 100vh;
+}
+
+nav {
+   background-color: black !important;
+   opacity: 0.2 !important;
+}
+
+/* Navbar */
+.customNavbar {
+   /* color: #fff; */
+   opacity: 0.2;
+   height: 4.37rem;
+}
+
+nav .nav-wrapper .brand-logo img {
+   height: 64px;
+}
+
+nav div a {
+   /* background: url("./img/logo_white.svg") no-repeat !important; */
+   width: 190px;
+   height: 44px;
+}

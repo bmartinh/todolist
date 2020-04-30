@@ -1,0 +1,74 @@
+@charset "UTF-8";
+// Color
+@import "../../node_modules/materialize-css/sass/components/color-variables";
+@import "../../node_modules/materialize-css/sass/components/color-classes";
+
+//Materialize Color Variables
+$primary-color: color("grey", "darken-2") !default;
+$secondary-color: color("teal", "base") !default;
+
+$placeholder_fontsize: 1.25rem;
+$box_shadow: 0px 2px 5px darken($secondary-color, 15) !important;
+
+nav {
+   background: rgba(0, 0, 0, 0.3) !important;
+}
+
+body {
+   background: url("../img/notebook_bg.png") repeat-y center center/cover;
+   height: 100vh;
+}
+
+input {
+   border-bottom: 1px solid #fff !important;
+   color: #fff !important;
+   font-size: 1.5rem !important;
+}
+
+.no-border {
+   border: none !important;
+   overflow: visible !important;
+}
+
+.list-item {
+   margin-bottom: 0.7rem !important;
+   box-shadow: $box_shadow;
+}
+
+.custom-sidenav {
+   padding: 50px !important;
+}
+//Placeholder color
+::placeholder {
+   /* Chrome, Firefox, Opera, Safari 10.1+ */
+   color: #fafafa !important;
+   opacity: 1; /* Firefox */
+   font-size: $placeholder_fontsize;
+}
+
+:-ms-input-placeholder {
+   /* Internet Explorer 10-11 */
+   color: #fafafa !important;
+   font-size: $placeholder_fontsize;
+}
+
+::-ms-input-placeholder {
+   /* Microsoft Edge */
+   color: #fafafa !important;
+   font-size: $placeholder_fontsize;
+}
+
+#datepicker {
+   color: white !important;
+   font-weight: bold !important;
+   font-size: 2rem !important;
+   font-family: "Roboto", sans-serif !important;
+}
+
+.taskitem_text {
+   font-weight: bold !important;
+   font-size: 1.5rem !important;
+   font-family: "Dancing Script", cursive !important;
+}
+
+@import "../../node_modules/materialize-css/sass/materialize";
