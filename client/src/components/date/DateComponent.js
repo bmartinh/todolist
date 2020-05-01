@@ -38,10 +38,12 @@ const DateComponent = ({ currentDate, setCurrentDate }) => {
          <div className='col s2 l3'>
             <a
                onClick={onClickLeft}
-               className='waves-effect waves-light btn light-blue darken-3 right'
+               className='waves-effect waves-light btn-flat right datepicker-btn-left'
+               // className='waves-effect waves-light btn light-blue darken-3 right'
                href='#!'
             >
-               <i className='material-icons'>chevron_left</i>
+               {/* <i className='material-icons'>chevron_left</i> */}
+               {"<"}
             </a>
          </div>
          <div className='col s8 l6'>
@@ -55,12 +57,19 @@ const DateComponent = ({ currentDate, setCurrentDate }) => {
             />
          </div>
          <div className='col s2 l3'>
-            <a
+            {/* <a
                onClick={onClickRight}
                className='waves-effect waves-light light-blue darken-3 btn'
                href='#!'
             >
                <i className='material-icons'>chevron_right</i>
+            </a> */}
+            <a
+               onClick={onClickRight}
+               className='waves-effect waves-light btn-flat left datepicker-btn-right'
+               href='#!'
+            >
+               {">"}
             </a>
          </div>
       </div>

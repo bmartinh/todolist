@@ -28,7 +28,7 @@ const TasksList = ({
 
    return (
       <div className='row'>
-         <div className='col l10 push-l1 s10 push-s1'>
+         <div className='col s10 push-s1'>
             <ul className='collection no-border'>
                {tasks.map((task) => (
                   <TaskItem key={task._id} task={task} />

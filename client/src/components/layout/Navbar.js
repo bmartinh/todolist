@@ -32,7 +32,9 @@ const Navbar = ({ title }) => {
             </div>
          </nav>
          <ul ref={sideNav} className='sidenav custom-sidenav' id='mobile-demo'>
-            <GoogleAuth />
+            <li>
+               <GoogleAuth />
+            </li>
          </ul>
       </div>
    );
